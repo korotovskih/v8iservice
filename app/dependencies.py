@@ -62,7 +62,8 @@ class SoapRequest:
 class InfoBasesList:
     def __init__(self, content):
         self.content: str = content
-        hash_object = hashlib.md5(self.content.encode())
+        self.content_bin: bytes = self.content.encode("utf-8")
+        hash_object = hashlib.md5(self.content_bin)
         self.md5_hash: str = hash_object.hexdigest()
 
 
